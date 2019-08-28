@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Fisrt Canvas</title>
+  </head>
+  <body>
+      <canvas id="mycvs"></canvas>
+      <script>
+      window.addEventListener('load', draw, false);
+      window.addEventListener('load', drawRect, false);
+      window.addEventListener('load', Update, false);
+      var canvas = document.getElementById("mycvs");
+      var ctx = canvas.getContext("2d");
+      canvas.width = 200;
+      canvas.height = 200;
+      var x = 0;
+      var xSpeed = 2;
+      function draw()
+      {
+          ctx.fillStyle = 'rgb(0,0,255)';
+          ctx.fillRect(20,20, canvas.width, canvas.height);
+          ctx.globalAlpha = 0.5;
+
+          ctx.beginPath();
+
+          ctx.arc(120, 50, 10, 0, 2 * Math.PI, false);
+          ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+          ctx.fill();
+          ctx.strokeStyle = "#FF0000";
+          ctx.stroke();
+          ctx.clearRect(0,0,canvas.width, canvas.width);
+
+        }
+        function drawRect()
+        {
+
+          ctx.fillStyle = 'rgb(0,0,255)';
+          ctx.fillRect(0, 100, 10, 10);
+        }
+        function Update()
+        {
+          ctx.clearRect(0,0, canvas.width, canvas.height);
+          drawRect();
+          x += xSpeed;
+          ctx.fillRect(x, 100, 10, 10);
+        }
+        setInterval(Update, 1000/60)
+
+      </script>
+  </body>
+</html>
